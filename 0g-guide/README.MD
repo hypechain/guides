@@ -139,11 +139,11 @@ Wait a bit until you get the logs. To get out of them press **Cntr+C.**
 Install Spanshot, addrbook, update peers:
 
 ```bash
-curl -Ls https://snapshots.liveraven.net/snapshots/testnet/zero-gravity/addrbook.json > $HOME/.0gchain/config/addrbook.json
+curl -Ls https://snapshots.hypechain.net/snapshots/testnet/zero-gravity/addrbook.json > $HOME/.0gchain/config/addrbook.json
 ```
 
 ```bash
-PEERS=$(curl -s --max-time 3 --retry 2 --retry-connrefused "https://snapshots.liveraven.net/snapshots/testnet/zero-gravity/peers.txt")
+PEERS=$(curl -s --max-time 3 --retry 2 --retry-connrefused "https://snapshots.hypechain.net/snapshots/testnet/zero-gravity/peers.txt")
 if [ -z "$PEERS" ]; then
     echo "No peers were retrieved from the URL."
 else
@@ -157,7 +157,7 @@ fi
 sudo systemctl stop ogd
 cp $HOME/.0gchain/data/priv_validator_state.json $HOME/.0gchain/priv_validator_state.json.backup
 rm -rf $HOME/.0gchain/data
-curl -L http://snapshots.liveraven.net/snapshots/testnet/zero-gravity/zgtendermint_16600-1_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.0gchain
+curl -L http://snapshots.hypechain.net/snapshots/testnet/zero-gravity/zgtendermint_16600-1_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.0gchain
 mv $HOME/.0gchain/priv_validator_state.json.backup $HOME/.0gchain/data/priv_validator_state.json
 sudo systemctl restart ogd && sudo journalctl -u ogd -f -o cat
 ```
